@@ -29,7 +29,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 			$row = mysqli_fetch_assoc($result);
             if ($row['user_name'] === $uname && $row['password'] === $pass) {
             	$_SESSION['user_name'] = $row['user_name'];
-            	$_SESSION['name'] = $row['name'];
+            	$_SESSION['name'] = $row['nombre1Admin'];
             	$_SESSION['idAdmin'] = $row['idAdmin'];
             	header("Location: home.php");
 		        exit();
