@@ -2,7 +2,7 @@
 
 $sname= "localhost";
 $unmae= "root";
-$password = "";
+$password = "root";
 
 $db_name = "oge_bd";
 
