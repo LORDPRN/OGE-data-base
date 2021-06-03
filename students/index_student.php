@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/sourcesanspro-font.css">
     <!-- Main Style Css -->
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="images/oge.png">
+    <link rel="icon" href="images/oge_student.png">
 
 </head>
 
