@@ -16,6 +16,7 @@ $user_name = $_POST['user_name'];
 $correoAdmin = $_POST['correoAdmin'];
 $password = $_POST['password'];
 
+
 //La variable conexión es para contectarse 
 $conn = mysqli_connect($sname, $unmae, $password2, $db_name);
 

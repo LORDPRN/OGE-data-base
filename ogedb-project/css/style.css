@@ -109,6 +109,17 @@ body {
     -o-transition: all .2s ease;
     -ms-transition: all .2s ease;
 }
+
+.form-v8-content .form-row .form-row-inner .label2 {
+	position: absolute;
+	bottom: 20px;
+    left: 10px;
+    font-size: 18px;
+    color: #f2f2f2;
+    font-weight: 400;
+    transform-origin: 0 0;
+
+}
 .form-v8-content .form-row .form-row-inner .border {
 	position: absolute;
     bottom: 31px;
@@ -128,9 +139,32 @@ body {
     -o-transition: all .15s ease;
     -ms-transition: all .15s ease;
 }
+
+.form-v8-content .form-detail .select{
+	margin-bottom: 31px;
+	width: 100%;
+    padding: 0px 10px 15px 10px;
+    border: 1px solid transparent;
+    border-bottom: 1px solid;
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+    appearance: unset;
+	outline: none;
+	font-size: 18px;
+	font-weight: 300;
+	box-sizing: border-box;
+	background: transparent;
+	color: white;
+}
+
+.form-v8-content .form-detail .form-row .select:focus{
+	border-bottom: 1px solid #53c83c;
+	background: transparent;
+}
+
 .form-v8-content .form-detail .input-text {
 	margin-bottom: 31px;
 }
+
 .form-v8-content .form-detail input {
 	width: 100%;
     padding: 0px 10px 15px 10px;
@@ -249,6 +283,7 @@ body {
 	width: 95%;
 	border-radius: 5px;
  }
+ 
 
  .notify{
 	background: #e5f2de;
