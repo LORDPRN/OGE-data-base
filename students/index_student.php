@@ -131,7 +131,7 @@
 
                         <div class="form-row">
                             <label class="form-row-inner">
-                                <input type="text" name="user_name" id="full_name_1" class="input-text" required>
+                                <input type="text" name="usuarioCuenta" id="full_name_1" class="input-text" required>
                                 <span class="label">User ID</span>
                                 <span class="border"></span>
                             </label>
@@ -139,7 +139,7 @@
 
                         <div class="form-row">
                             <label class="form-row-inner">
-                                <input type="password" name="password" id="password_1" class="input-text" required>
+                                <input type="password" name="contraseniaCuenta" id="password_1" class="input-text" required>
                                 <span class="label">Contraseña</span>
                                 <span class="border"></span>
                             </label>

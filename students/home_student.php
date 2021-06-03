@@ -1,13 +1,13 @@
 <?php 
 session_start();
 
-if (isset($_SESSION['codigoCuenta']) && isset($_SESSION['usuarioCuenta'])) {
+if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
 
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>OGE ADMIN LOGIN</title>
+	<title>OGE student login</title>
 	<link rel="stylesheet" type="text/css" href="stylelogin.css">
 </head>
 <body>

@@ -1,6 +1,6 @@
 <?php 
 session_start(); 
-include "db_conn.php";
+include "db_conn_student.php";
 
 if (isset($_POST['usuarioCuenta']) && isset($_POST['contraseniaCuenta'])) {
 
@@ -29,9 +29,9 @@ if (isset($_POST['usuarioCuenta']) && isset($_POST['contraseniaCuenta'])) {
 			$row = mysqli_fetch_assoc($result);
             if ($row['usuarioCuenta'] === $usuarioCuenta && $row['contraseniaCuenta'] === $contraseniaCuenta) {
             	$_SESSION['usuarioCuenta'] = $row['usuarioCuenta'];
-            	$_SESSION['nombre1Admin'] = $row['nombre1Admin'];
+            	$_SESSION['nombre1Cuenta'] = $row['nombre1Cuenta'];
             	$_SESSION['idCuenta'] = $row['idCuenta'];
-            	header("Location: home.php");
+            	header("Location: home_student.php");
 		        exit();
             }else{
 				header("Location: index_student.php?error=User ID ó contraseña inválida.");
