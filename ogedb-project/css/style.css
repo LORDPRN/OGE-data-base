@@ -249,4 +249,11 @@ body {
 	width: 95%;
 	border-radius: 5px;
  }
- 
+
+ .notify{
+	background: #e5f2de;
+	color: #4ba942;
+	padding: 10px;
+	width: 95%;
+	border-radius: 5px;
+ }

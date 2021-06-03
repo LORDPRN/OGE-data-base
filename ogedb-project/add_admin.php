@@ -23,7 +23,8 @@ $conn = mysqli_connect($sname, $unmae, $password2, $db_name);
 $sql = "INSERT INTO administradores (nombre1Admin, nombre2Admin, apellido1Admin, apellido2Admin, user_name, correoAdmin, password) VALUES ('$nombre1Admin','$nombre2Admin','$apellido1Admin','$apellido2Admin','$user_name','$correoAdmin','$password')";
 
 if (mysqli_query($conn, $sql)) {
-	echo "Se registró";
+	header("Location: index.php?notify=Se han registrado tus datos correctamente");
+	exit();
 }
 else{
 	echo "F";

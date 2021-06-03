@@ -82,6 +82,9 @@
 
                         <div class="form-row-last">
                             <input type="submit" name="register" class="register" value="Registrarse">
+                            <?php if (isset($_GET['notify'])) { ?>
+                            <p class="notify"><?php echo $_GET['notify']; ?></p>
+                            <?php } ?>
                         </div>
 
                     </div>
