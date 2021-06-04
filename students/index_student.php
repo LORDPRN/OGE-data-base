@@ -92,8 +92,8 @@
                             <label class="form-row-inner">
                             <span class="label2">Eres coordinador?</span>
                                 <select name="esCoordinador" class="select">
-                                <option value='No' style='background:#3D5983;'>No lo soy</option>
-                                <option value='Si' style='background:#3D5983;'>Lo soy</option>                        
+                                <option value='1' style='background:#3D5983;'>true</option>
+                                <option value='0' style='background:#3D5983;'>false</option>                        
                                 </select>
                             </label>
                         </div>
@@ -102,7 +102,7 @@
                             <span class="label2">Elige una carrera: </span>
                                 <?php
                                 $mysqli = NEW MySQLi('localhost','root','root','oge_bd');
-                                $resultSet = $mysqli->query("SELECT nombreCarrera FROM carreras");
+                                $resultSet = $mysqli->query("SELECT * FROM carreras");
                                 $color1="#3D5983";
                                 $color= $color1;
                                 ?>
