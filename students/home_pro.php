@@ -94,6 +94,10 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
                     <span class="sidebar__hash">👨‍💻</span>
                     <p>Base de datos</p>
                 </div>
+                <div class="sidebar__recentItem">
+                    <span class="sidebar__hash">❓</span>
+                    <p>Más info: /Grupos</p>
+                </div>
             </div>
         </div>
         <!-- Sidebar Ends -->
@@ -138,6 +142,7 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
                     <td>fechaPublicacionC</td>
                     <td>descripcionC</td>
                     <td>archivoC</td>
+                    <td>Acciones</td>
                     <i class="material-icons sidebar__topAvatar"> supervisor_account </i>
                     <div class="post__info">
                         <h2>Hola <?php echo $_SESSION['nombre1Cuenta']?> <?php echo $_SESSION['apellido1Cuenta']?>,
@@ -176,6 +181,12 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
                         <i style="color: gray" class="material-icons"> comment </i>
                         <h4>Comment</h4>
                     </td>
+                    <td>
+                        <h4>
+                        <a href="editar_post.php?idContenido=<?php echo $row["idContenido"];?>" class="">Editar</a>
+                        <a href="borrar_post.php?idContenido=<?php echo $row["idContenido"];?>" class="">Borrar</a>
+                    </td>
+                    
                     </div>
                 </div>
                 </tr>
