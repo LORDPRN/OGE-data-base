@@ -30,8 +30,12 @@ if (isset($_POST['user_name']) && isset($_POST['password'])) {
             if ($row['user_name'] === $user_name && $row['password'] === $password) {
             	$_SESSION['user_name'] = $row['user_name'];
             	$_SESSION['nombre1Admin'] = $row['nombre1Admin'];
+				$_SESSION['nombre2Admin'] = $row['nombre2Admin'];
+				$_SESSION['apellido1Admin'] = $row['apellido1Admin'];
+				$_SESSION['apellido2Admin'] = $row['apellido2Admin'];
+				$_SESSION['correoAdmin'] = $row['correoAdmin'];
             	$_SESSION['idAdmin'] = $row['idAdmin'];
-            	header("Location: home.php");
+            	header("Location: grupos.php");
 		        exit();
             }else{
 				header("Location: index.php?error=User ID ó contraseña inválida.");

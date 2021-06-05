@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
+if (isset($_SESSION['idAdmin']) && isset($_SESSION['user_name'])) {
  ?>
 <html lang="en">
 <head>
@@ -29,12 +29,13 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
         <div class="header__right">
             <div class="headerOption">
             <i class="material-icons headerOption__icon"> home </i>
-            <h3><input type="button" value="Casa"></h3>
+            <h3><a href="home_pro.php"><input type="button" value="Home"></a></h3>
         </div>
 
-    <div class="headerOption">
+        <div class="headerOption">
             <i class="material-icons headerOption__icon"> supervisor_account </i>
-            <h3><a href="grupos.php"><input type="button" value="Grupos"></a></h3>
+            <h3><a href="grupos.php"><input type="button" value="Groups"></a></h3>
+            </h3>
         </div>
 
         <div class="headerOption">
@@ -55,21 +56,15 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
             <div class="sidebar__top">
                 <img src="images/CAMPUS-PLANEACION.jpg" alt="" />
                 <i class="material-icons sidebar__topAvatar"> account_circle </i>
-                <h2><?php echo $_SESSION['nombre1Cuenta']; ?> <?php echo $_SESSION['apellido1Cuenta']?></h2>
-                <h4><?php echo $_SESSION['correoInstitucional']; ?></h4>
+                <h2><?php echo $_SESSION['nombre1Admin']; ?> <?php echo $_SESSION['apellido1Admin']?></h2>
+                <h4><?php echo $_SESSION['correoAdmin']; ?></h4>
             </div>
 
-            <div class="sidebar__stats">
+            <div class="sidebar__stats">         
                 <div class="sidebar__stat">
-                    <p>Estudiante de :</p>
-                    <p class="sidebar__statNumber"><?php echo $_SESSION['nombreCarrera'];?></p>
-                </div>
-                <div class="sidebar__stat">
-                    <p>Coordinador:</p>
+                    <p>Administrador:</p>
                     <p class="sidebar__statNumber">
-                        <?php if($_SESSION['esCoordinador']=1){
-                        ?><i class="material-icons headerOption__icon">check</i><?php
-                    }?>
+                       <i class="material-icons headerOption__icon">check</i>
                     </p>
                 </div>
             </div>
@@ -147,7 +142,7 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
                     <td>Acciones</td>
                     <i class="material-icons sidebar__topAvatar"> supervisor_account </i>
                     <div class="post__info">
-                        <h2>Hola <?php echo $_SESSION['nombre1Cuenta']?> <?php echo $_SESSION['apellido1Cuenta']?>,
+                        <h2>Hola <?php echo $_SESSION['nombre1Admin']?> <?php echo $_SESSION['apellido1Admin']?>,
                         aquí están todas las publicaciones realizadas
                     </h2>
                     <br>

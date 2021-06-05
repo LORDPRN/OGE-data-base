@@ -18,6 +18,8 @@
     <div class="page-content">
         <div class="form-v8-content">
             <div class="form-left">
+            <a href="http://localhost:3000/students/index_student.php" style="color:#D2390C;text-align: center">Are you lost? students here...</a>
+
                 <img src="images/form-v8.jpg" alt="form">
             </div>
             <div class="form-right">

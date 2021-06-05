@@ -18,9 +18,12 @@
     <div class="page-content">
         <div class="form-v8-content">
             <div class="form-left">
+            <a href="http://localhost:3000/ogedb-project/index.php" style="color:#D2390C;text-align: center">Psss! ... Are you admin?</a>
                 <img src="images/form-v8_1.jpg" alt="form">
+                
             </div>
             <div class="form-right">
+                
                 <div class="tab">
                     <div class="tab-inner">
                         <button class="tablinks" onclick="openCity(event, 'sign-up')"
@@ -30,7 +33,9 @@
                         <button class="tablinks" onclick="openCity(event, 'sign-in')">Iniciar sesión</button>
                     </div>
                 </div>
+                
                 <form class="form-detail" action="add_student.php" method="post">
+                    
                     <div class="tabcontent" id="sign-up">
                         <div class="form-row">
                             <label class="form-row-inner">
