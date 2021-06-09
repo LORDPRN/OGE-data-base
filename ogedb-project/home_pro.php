@@ -101,7 +101,7 @@ if (isset($_SESSION['idAdmin']) && isset($_SESSION['user_name'])) {
                 <div class="feed__inputOptions">
                     <div class="inputOption">
                         <i style="color: #70b5f9" class="material-icons"> insert_photo </i>
-                        <h4><input name="archivoC" type="file" name="image" id="text-input" required></h4>
+                        <h4><input name="archivoC" type="file" name="image" id="text-input"></h4>
 
                     </div>
                     <div class="inputOption">
