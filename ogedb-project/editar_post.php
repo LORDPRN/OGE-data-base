@@ -34,17 +34,11 @@ $contenidos = "SELECT * FROM contenidos WHERE idContenido = '$idContenido'";
         <table border="1">
             <tr>
                 <div class="post__header">
-                    <td>ID</td>
-                    <td>Nombre 1</td>
-                    <td>Nombre 2</td>
-                    <td>Apellido 1</td>
-                    <td>Apellido 2</td>
-                    <td>Correo</td>
-                    <td>Celular</td>
-                    <td>Usuario</td>
-                    <td>Contraseña</td>
-                    <td>Coordinador?</td>
-                    <td>Carrera</td>
+                    <td>idContenido</td>
+                    <td>fechaPublicacionC</td>
+                    <td>descripcionC</td>
+                    <td>archivoC</td>
+                    <td>Acciones</td>
                     <i class="material-icons sidebar__topAvatar"> supervisor_account </i>
                     <div class="post__info">
                         <h2>Editar post

@@ -73,14 +73,10 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
 
         <!-- Feed Starts -->
         <div class="feed">
-        
-         
-                </div>
-                </form>
+        <!-- Post Starts -->
+        </form>
         </div>
-
-            <!-- Post Starts -->
-            <div class="post">                        
+        <div class="post">                        
 		<table border="1">
                 <tr>
                 <div class="post__header">
@@ -126,7 +122,6 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
                     <td>
                         <h4>
                         <a href="editar-grupo.php?idGrupo=<?php echo $row["idGrupo"];?>" class="">Editar</a>
-                        <a href="borrar-grupo.php?idGrupo=<?php echo $row["idGrupo"];?>" class="">Borrar</a>
                     </td>
                     
                     </div>
