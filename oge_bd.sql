@@ -1,34 +1,29 @@
--- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2021 a las 22:13:49
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: oge_bd
+-- ------------------------------------------------------
+-- Server version	5.7.29-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Base de datos: `oge_bd`
+-- Table structure for table `administradores`
 --
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `administradores`
---
-
+DROP TABLE IF EXISTS `administradores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `administradores` (
-  `idAdmin` int(11) NOT NULL,
+  `idAdmin` int(11) NOT NULL AUTO_INCREMENT,
   `nombre1Admin` varchar(50) NOT NULL,
   `nombre2Admin` varchar(50) DEFAULT NULL,
   `apellido1Admin` varchar(50) NOT NULL,
@@ -36,120 +31,191 @@ CREATE TABLE `administradores` (
   `correoAdmin` varchar(50) NOT NULL,
   `telefonoAdmin` varchar(50) NOT NULL,
   `user_name` varchar(50) DEFAULT NULL,
-  `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY (`idAdmin`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `administradores`
+-- Dumping data for table `administradores`
 --
 
-INSERT INTO `administradores` (`idAdmin`, `nombre1Admin`, `nombre2Admin`, `apellido1Admin`, `apellido2Admin`, `correoAdmin`, `telefonoAdmin`, `user_name`, `password`) VALUES
-(1, 'Abdiel', 'David', 'Arias', 'Asprilla', 'abdiel.arias@uao.edu.co', '000000', 'abdiel.arias', '2175176'),
-(2, 'Maria', NULL, 'Brand', NULL, 'brand@uao.edu.co', '0000000000', 'maria.brand', '2171458'),
-(3, 'Alejandro', NULL, 'Ochoa', NULL, 'alejandro.ochoa@uao.edu.co', '0000000000', 'alejandro.ochoa', '2180619');
-
--- --------------------------------------------------------
+LOCK TABLES `administradores` WRITE;
+/*!40000 ALTER TABLE `administradores` DISABLE KEYS */;
+INSERT INTO `administradores` VALUES (1,'Abdiel','David','Arias','Asprilla','abdiel.arias@uao.edu.co','000000','abdiel.arias','2175176'),(2,'Maria','Fernanda','Brand',NULL,'brand@uao.edu.co','0000000000','maria.brand','2171458'),(3,'Alejandro',NULL,'Ochoa','Salamanca','alejandro.ochoa@uao.edu.co','0000000000','alejandro.ochoa','2180619');
+/*!40000 ALTER TABLE `administradores` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `archivos_contenidos`
+-- Temporary view structure for view `administradorgrupo`
 --
 
+DROP TABLE IF EXISTS `administradorgrupo`;
+/*!50001 DROP VIEW IF EXISTS `administradorgrupo`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `administradorgrupo` AS SELECT 
+ 1 AS `nombre1Admin`,
+ 1 AS `apellido1Admin`,
+ 1 AS `nombreGrupo`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `archivos_contenidos`
+--
+
+DROP TABLE IF EXISTS `archivos_contenidos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `archivos_contenidos` (
-  `idArchivoContenido` int(11) NOT NULL,
+  `idArchivoContenido` int(11) NOT NULL AUTO_INCREMENT,
   `archivoContenido` varchar(255) DEFAULT NULL,
-  `idContenidoFA` int(11) NOT NULL
+  `idContenidoFA` int(11) NOT NULL,
+  PRIMARY KEY (`idArchivoContenido`),
+  KEY `archivos_contenidos_ibfk_1` (`idContenidoFA`),
+  CONSTRAINT `archivos_contenidos_ibfk_1` FOREIGN KEY (`idContenidoFA`) REFERENCES `contenidossd` (`idContenido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `carreras`
+-- Dumping data for table `archivos_contenidos`
 --
 
+LOCK TABLES `archivos_contenidos` WRITE;
+/*!40000 ALTER TABLE `archivos_contenidos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `archivos_contenidos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `carreras`
+--
+
+DROP TABLE IF EXISTS `carreras`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `carreras` (
-  `idCarrera` int(11) NOT NULL,
-  `nombreCarrera` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `idCarrera` int(11) NOT NULL AUTO_INCREMENT,
+  `nombreCarrera` varchar(100) NOT NULL,
+  PRIMARY KEY (`idCarrera`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `carreras`
+-- Dumping data for table `carreras`
 --
 
-INSERT INTO `carreras` (`idCarrera`, `nombreCarrera`) VALUES
-(1, 'Ingeniería de manufactura - modalidad combinada'),
-(2, 'Ingeniería de datos e inteligencia artificial - modalidad combinada'),
-(3, 'Ingeniería empresarial - modalidad combinada'),
-(4, 'Diseño industrial'),
-(5, 'Ingeniería ambiental'),
-(6, 'Ingeniería biomédica'),
-(7, 'Ingeniería eléctrica'),
-(8, 'Ingeniería electrónica y telecomunicaciones'),
-(9, 'Ingeniería industrial'),
-(10, 'Ingeniería informática'),
-(11, 'Ingeniería mecánica'),
-(12, 'Ingeniería mecatrónica'),
-(13, 'Ingeniería multimedia');
-
--- --------------------------------------------------------
+LOCK TABLES `carreras` WRITE;
+/*!40000 ALTER TABLE `carreras` DISABLE KEYS */;
+INSERT INTO `carreras` VALUES (1,'Ingeniería de manufactura - modalidad combinada'),(2,'Ingeniería de datos e inteligencia artificial - modalidad combinada'),(3,'Ingeniería empresarial - modalidad combinada'),(4,'Diseño industrial'),(5,'Ingeniería ambiental'),(6,'Ingeniería biomédica'),(7,'Ingeniería eléctrica'),(8,'Ingeniería electrónica y telecomunicaciones'),(9,'Ingeniería industrial'),(10,'Ingeniería informática'),(11,'Ingeniería mecánica'),(12,'Ingeniería mecatrónica'),(13,'Ingeniería multimedia');
+/*!40000 ALTER TABLE `carreras` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `comentarios`
+-- Table structure for table `comentarios`
 --
 
+DROP TABLE IF EXISTS `comentarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comentarios` (
-  `idComentario` int(11) NOT NULL,
+  `idComentario` int(11) NOT NULL AUTO_INCREMENT,
   `descripcionComentario` varchar(300) NOT NULL,
-  `fechaComentario` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `fechaComentario` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `codigoCuentaFCom` int(11) NOT NULL,
-  `idContenidoFCom` int(11) NOT NULL
+  `idContenidoFCom` int(11) NOT NULL,
+  PRIMARY KEY (`idComentario`),
+  KEY `comentarios_ibfk_1` (`codigoCuentaFCom`),
+  KEY `comentarios_ibfk_2` (`idContenidoFCom`),
+  CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`codigoCuentaFCom`) REFERENCES `cuentasd` (`idCuenta`),
+  CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`idContenidoFCom`) REFERENCES `contenidossd` (`idContenido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `contenidos`
+-- Dumping data for table `comentarios`
 --
 
+LOCK TABLES `comentarios` WRITE;
+/*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `consultarcuentasgrupos`
+--
+
+DROP TABLE IF EXISTS `consultarcuentasgrupos`;
+/*!50001 DROP VIEW IF EXISTS `consultarcuentasgrupos`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `consultarcuentasgrupos` AS SELECT 
+ 1 AS `nombre1Cuenta`,
+ 1 AS `nombre2Cuenta`,
+ 1 AS `nombreGrupo`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `contenidos`
+--
+
+DROP TABLE IF EXISTS `contenidos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `contenidos` (
-  `idContenido` int(11) NOT NULL,
-  `fechaPublicacionC` datetime NOT NULL DEFAULT current_timestamp(),
+  `idContenido` int(11) NOT NULL AUTO_INCREMENT,
+  `fechaPublicacionC` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `descripcionC` varchar(255) NOT NULL,
-  `archivoC` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `archivoC` blob NOT NULL,
+  PRIMARY KEY (`idContenido`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `contenidos`
+-- Dumping data for table `contenidos`
 --
 
-INSERT INTO `contenidos` (`idContenido`, `fechaPublicacionC`, `descripcionC`, `archivoC`) VALUES
-(2, '2021-06-04 10:34:45', 'Post 2', 0x6d3630613634386330346564306265306330633932363437312e6a7067),
-(3, '2021-06-04 11:00:42', 'Post 3', 0x39393335376535323332323334616638643364303263643864356566623633345f66626239396461333839393833303166323463333563613663343561616433395f5f303031345f62617469646f636869616d616e676f6c696d6f6e6164616d616e676f5f313230305f3630302e6a7067),
-(4, '2021-06-04 11:06:50', 'Post 4', 0x64303630393439373464303138306235623865663066656364666332383435335f50415354415f434f4e5f544f4d4154455f595f53415244494e415f313230305f3630302e6a7067),
-(5, '2021-06-04 15:27:37', 'Post 5', 0x3630613634386330346564306265306330633932363437322e6a7067),
-(6, '2021-06-04 15:28:33', 'Post 6', 0x39393335376535323332323334616638643364303263643864356566623633345f66626239396461333839393833303166323463333563613663343561616433395f5f303031345f62617469646f636869616d616e676f6c696d6f6e6164616d616e676f5f313230305f3630302e6a7067),
-(33, '2021-06-04 18:01:49', 'Post 7', 0x6d3630613634386330346564306265306330633932363437312e6a7067);
-
--- --------------------------------------------------------
+LOCK TABLES `contenidos` WRITE;
+/*!40000 ALTER TABLE `contenidos` DISABLE KEYS */;
+INSERT INTO `contenidos` VALUES (2,'2021-06-04 10:34:45','Post 2',_binary 'm60a648c04ed0be0c0c926471.jpg'),(3,'2021-06-04 11:00:42','Post 3',_binary '99357e5232234af8d3d02cd8d5efb634_fbb99da38998301f24c35ca6c45aad39__0014_batidochiamangolimonadamango_1200_600.jpg'),(4,'2021-06-04 11:06:50','Post 4',_binary 'd06094974d0180b5b8ef0fecdfc28453_PASTA_CON_TOMATE_Y_SARDINA_1200_600.jpg'),(5,'2021-06-04 15:27:37','Post 5',_binary '60a648c04ed0be0c0c926472.jpg'),(6,'2021-06-04 15:28:33','Post 6',_binary '99357e5232234af8d3d02cd8d5efb634_fbb99da38998301f24c35ca6c45aad39__0014_batidochiamangolimonadamango_1200_600.jpg'),(33,'2021-06-04 18:01:49','Post 7',_binary 'm60a648c04ed0be0c0c926471.jpg');
+/*!40000 ALTER TABLE `contenidos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `contenidossd`
+-- Table structure for table `contenidossd`
 --
 
+DROP TABLE IF EXISTS `contenidossd`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `contenidossd` (
-  `idContenido` int(11) NOT NULL,
-  `fechaPublicacionC` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `idContenido` int(11) NOT NULL AUTO_INCREMENT,
+  `fechaPublicacionC` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `descripcionC` varchar(300) DEFAULT NULL,
-  `idGrupoFCont` int(11) NOT NULL
+  `idGrupoFCont` int(11) NOT NULL,
+  PRIMARY KEY (`idContenido`),
+  KEY `contenidos_ibfk_1` (`idGrupoFCont`),
+  CONSTRAINT `contenidossd_ibfk_1` FOREIGN KEY (`idGrupoFCont`) REFERENCES `grupos_estudiantilessd` (`idGrupo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `cuentas`
+-- Dumping data for table `contenidossd`
 --
 
+LOCK TABLES `contenidossd` WRITE;
+/*!40000 ALTER TABLE `contenidossd` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contenidossd` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cuentas`
+--
+
+DROP TABLE IF EXISTS `cuentas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cuentas` (
-  `idCuenta` int(11) NOT NULL,
+  `idCuenta` int(11) NOT NULL AUTO_INCREMENT,
   `nombre1Cuenta` varchar(50) NOT NULL,
   `nombre2Cuenta` varchar(50) NOT NULL,
   `apellido1Cuenta` varchar(50) NOT NULL,
@@ -159,26 +225,30 @@ CREATE TABLE `cuentas` (
   `usuarioCuenta` varchar(50) NOT NULL,
   `contraseniaCuenta` varchar(50) NOT NULL,
   `esCoordinador` tinyint(1) NOT NULL,
-  `nombreCarrera` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `nombreCarrera` varchar(255) NOT NULL,
+  PRIMARY KEY (`idCuenta`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `cuentas`
+-- Dumping data for table `cuentas`
 --
 
-INSERT INTO `cuentas` (`idCuenta`, `nombre1Cuenta`, `nombre2Cuenta`, `apellido1Cuenta`, `apellido2Cuenta`, `correoInstitucional`, `numeroCelular`, `usuarioCuenta`, `contraseniaCuenta`, `esCoordinador`, `nombreCarrera`) VALUES
-(22, 'Hello', 'Mundo', 'World', 'Hola', 'root@uao.edu.co', '3167573985', 'coordinador', 'root', 1, 'Ingeniería multimedia'),
-(25, 'n1 est1', 'n2 est1', 'a1 est1', 'a2 est1', 'correoest1@uao.edu.co', '3100000000', 'n1', 'n1', 0, 'Ingeniería mecatrónica'),
-(26, 'n1 est2', 'n2 est2', 'a1 est2', 'a2 est2', 'correoest2@uao.edu.co', '3110000000', 'n1', 'n2', 0, 'Ingeniería informática');
-
--- --------------------------------------------------------
+LOCK TABLES `cuentas` WRITE;
+/*!40000 ALTER TABLE `cuentas` DISABLE KEYS */;
+INSERT INTO `cuentas` VALUES (22,'Hello','Mundo','World','Hola','root@uao.edu.co','3167573985','coordinador','root',1,'Ingeniería multimedia'),(25,'n1 est1','n2 est1','a1 est1','a2 est1','correoest1@uao.edu.co','3100000000','n1','n1',0,'Ingeniería mecatrónica'),(26,'n1 est2','n2 est2','a1 est2','a2 est2','correoest2@uao.edu.co','3110000000','n1','n2',0,'Ingeniería informática');
+/*!40000 ALTER TABLE `cuentas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `cuentasd`
+-- Table structure for table `cuentasd`
 --
 
+DROP TABLE IF EXISTS `cuentasd`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cuentasd` (
-  `idCuenta` int(11) NOT NULL,
+  `idCuenta` int(11) NOT NULL AUTO_INCREMENT,
   `nombre1Cuenta` varchar(50) NOT NULL,
   `nombre2Cuenta` varchar(50) DEFAULT NULL,
   `apellido1Cuenta` varchar(50) NOT NULL,
@@ -188,295 +258,215 @@ CREATE TABLE `cuentasd` (
   `usuarioCuenta` varchar(50) NOT NULL,
   `contraseniaCuenta` varchar(50) NOT NULL,
   `esCoordinador` tinyint(4) DEFAULT NULL,
-  `idCarreraFC` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `idCarreraFC` int(11) NOT NULL,
+  PRIMARY KEY (`idCuenta`),
+  KEY `cuentas_ibfk_1` (`idCarreraFC`),
+  CONSTRAINT `cuentasd_ibfk_1` FOREIGN KEY (`idCarreraFC`) REFERENCES `carreras` (`idCarrera`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2175193 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `cuentasd`
+-- Dumping data for table `cuentasd`
 --
 
-INSERT INTO `cuentasd` (`idCuenta`, `nombre1Cuenta`, `nombre2Cuenta`, `apellido1Cuenta`, `apellido2Cuenta`, `correoInstitucional`, `numeroCelular`, `usuarioCuenta`, `contraseniaCuenta`, `esCoordinador`, `idCarreraFC`) VALUES
-(2175180, 'xd', 'xd', 'xd', 'xd', 'xd', '3', 'xd', 'xd', 1, 1);
-
--- --------------------------------------------------------
+LOCK TABLES `cuentasd` WRITE;
+/*!40000 ALTER TABLE `cuentasd` DISABLE KEYS */;
+INSERT INTO `cuentasd` VALUES (1234567,'Valeria','Andrea','Delgado','Galvez','valeria.delgado@uao.edu.co','3124567890','valeria.delgado','1234',0,8),(2175180,'xd','xd','xd','xd','xd','3','xd','xd',1,1);
+/*!40000 ALTER TABLE `cuentasd` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `grupos_estudiantilessd`
+-- Table structure for table `grupos_estudiantilessd`
 --
 
+DROP TABLE IF EXISTS `grupos_estudiantilessd`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `grupos_estudiantilessd` (
-  `idGrupo` int(11) NOT NULL,
+  `idGrupo` int(11) NOT NULL AUTO_INCREMENT,
   `nombreGrupo` varchar(50) NOT NULL,
   `descripcionGrupo` varchar(50) DEFAULT NULL,
   `correoGrupo` varchar(50) NOT NULL,
   `telefonoGrupo` varchar(50) DEFAULT NULL,
-  `idAdminFG` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `idAdminFG` int(11) NOT NULL,
+  PRIMARY KEY (`idGrupo`),
+  KEY `grupos_estudiantiles_ibfk_1` (`idAdminFG`),
+  CONSTRAINT `grupos_estudiantilessd_ibfk_1` FOREIGN KEY (`idAdminFG`) REFERENCES `administradores` (`idAdmin`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Volcado de datos para la tabla `grupos_estudiantilessd`
+-- Dumping data for table `grupos_estudiantilessd`
 --
 
-INSERT INTO `grupos_estudiantilessd` (`idGrupo`, `nombreGrupo`, `descripcionGrupo`, `correoGrupo`, `telefonoGrupo`, `idAdminFG`) VALUES
-(1, 'programadores uao', 'nos gusta programar', 'programadores@uao.edu.co', '3000000000', 2),
-(3, '3Draftsman', 'Aprende a modelar en 3d ', 'aprende3d@uao.edu.co', '3000000001', 1);
-
--- --------------------------------------------------------
+LOCK TABLES `grupos_estudiantilessd` WRITE;
+/*!40000 ALTER TABLE `grupos_estudiantilessd` DISABLE KEYS */;
+INSERT INTO `grupos_estudiantilessd` VALUES (1,'programadores uao','nos gusta programar','programadores@uao.edu.co','3000000000',2),(3,'3Draftsman','Aprende a modelar en 3d ','aprende3d@uao.edu.co','3000000001',1),(4,'SGI','Ciencia y tecnología','sgi@uao.edu.co','3112333321',1);
+/*!40000 ALTER TABLE `grupos_estudiantilessd` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Estructura de tabla para la tabla `imagenes_perfiles`
+-- Table structure for table `imagenes_perfiles`
 --
 
+DROP TABLE IF EXISTS `imagenes_perfiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `imagenes_perfiles` (
-  `idImagen` int(11) NOT NULL,
-  `imagenP` longblob DEFAULT NULL,
-  `idGrupoFIm` int(11) NOT NULL
+  `idImagen` int(11) NOT NULL AUTO_INCREMENT,
+  `imagenP` longblob,
+  `idGrupoFIm` int(11) NOT NULL,
+  PRIMARY KEY (`idImagen`),
+  KEY `imagenes_perfiles_ibfk_1` (`idGrupoFIm`),
+  CONSTRAINT `imagenes_perfiles_ibfk_1` FOREIGN KEY (`idGrupoFIm`) REFERENCES `grupos_estudiantilessd` (`idGrupo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `inscripciones`
+-- Dumping data for table `imagenes_perfiles`
 --
 
+LOCK TABLES `imagenes_perfiles` WRITE;
+/*!40000 ALTER TABLE `imagenes_perfiles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `imagenes_perfiles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `inscripciones`
+--
+
+DROP TABLE IF EXISTS `inscripciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `inscripciones` (
-  `idInscripcion` int(11) NOT NULL,
-  `fechaInscripcion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `idInscripcion` int(11) NOT NULL AUTO_INCREMENT,
+  `fechaInscripcion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `codigoCuentaFI` int(11) NOT NULL,
-  `idGrupoFI` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+  `idGrupoFI` int(11) NOT NULL,
+  PRIMARY KEY (`idInscripcion`),
+  KEY `inscripciones_ibfk_1` (`codigoCuentaFI`),
+  KEY `inscripciones_ibfk_2` (`idGrupoFI`),
+  CONSTRAINT `inscripciones_ibfk_1` FOREIGN KEY (`codigoCuentaFI`) REFERENCES `cuentasd` (`idCuenta`),
+  CONSTRAINT `inscripciones_ibfk_2` FOREIGN KEY (`idGrupoFI`) REFERENCES `grupos_estudiantilessd` (`idGrupo`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estructura de tabla para la tabla `likes`
+-- Dumping data for table `inscripciones`
 --
 
+LOCK TABLES `inscripciones` WRITE;
+/*!40000 ALTER TABLE `inscripciones` DISABLE KEYS */;
+INSERT INTO `inscripciones` VALUES (1,'2021-06-09 21:09:14',1234567,4),(2,'2021-06-09 21:08:10',2175180,1);
+/*!40000 ALTER TABLE `inscripciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `likes`
+--
+
+DROP TABLE IF EXISTS `likes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `likes` (
-  `idLike` int(11) NOT NULL,
+  `idLike` int(11) NOT NULL AUTO_INCREMENT,
   `codigoCuentaFL` int(11) NOT NULL,
-  `idContenidoFL` int(11) NOT NULL
+  `idContenidoFL` int(11) NOT NULL,
+  PRIMARY KEY (`idLike`),
+  KEY `likes_ibfk_1` (`codigoCuentaFL`),
+  KEY `likes_ibfk_2` (`idContenidoFL`),
+  CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`codigoCuentaFL`) REFERENCES `cuentasd` (`idCuenta`),
+  CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`idContenidoFL`) REFERENCES `contenidossd` (`idContenido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Índices para tablas volcadas
+-- Dumping data for table `likes`
 --
 
---
--- Indices de la tabla `administradores`
---
-ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`idAdmin`);
+LOCK TABLES `likes` WRITE;
+/*!40000 ALTER TABLE `likes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `likes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Indices de la tabla `archivos_contenidos`
+-- Dumping routines for database 'oge_bd'
 --
-ALTER TABLE `archivos_contenidos`
-  ADD PRIMARY KEY (`idArchivoContenido`),
-  ADD KEY `archivos_contenidos_ibfk_1` (`idContenidoFA`);
+/*!50003 DROP PROCEDURE IF EXISTS `updateCuentas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateCuentas`(IN p_idCuenta int, IN p_nombre1Cuenta varchar(50), IN p_nombre2Cuenta varchar(50), p_apellido1Cuenta varchar(50), p_apellido2Cuenta varchar(50), p_correoInstitucional varchar(50), p_numeroCelular varchar(50), p_usuarioCuenta varchar(50), p_contraseniaCuenta varchar(50), p_esCoordinador tinyint)
+BEGIN
+update cuentas
+set
+nombre1Cuenta = p_nombre1Cuenta,
+nombre2Cuenta = p_nombre2Cuenta,
+apellido1Cuenta = p_apellido1Cuenta,
+apellido2Cuenta = p_apellido2Cuenta,
+correoInstitucional = p_correoInstitucional,
+numeroCelular = p_numeroCelular,
+usuarioCuenta = p_usuarioCuenta,
+contraseniaCuenta = p_contraseniaCuenta,
+esCoordinador = p_esCoordinador
+where
+idCuenta = p_idCuenta;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
--- Indices de la tabla `carreras`
---
-ALTER TABLE `carreras`
-  ADD PRIMARY KEY (`idCarrera`);
-
---
--- Indices de la tabla `comentarios`
---
-ALTER TABLE `comentarios`
-  ADD PRIMARY KEY (`idComentario`),
-  ADD KEY `comentarios_ibfk_1` (`codigoCuentaFCom`),
-  ADD KEY `comentarios_ibfk_2` (`idContenidoFCom`);
-
---
--- Indices de la tabla `contenidos`
---
-ALTER TABLE `contenidos`
-  ADD PRIMARY KEY (`idContenido`);
-
---
--- Indices de la tabla `contenidossd`
---
-ALTER TABLE `contenidossd`
-  ADD PRIMARY KEY (`idContenido`),
-  ADD KEY `contenidos_ibfk_1` (`idGrupoFCont`);
-
---
--- Indices de la tabla `cuentas`
---
-ALTER TABLE `cuentas`
-  ADD PRIMARY KEY (`idCuenta`);
-
---
--- Indices de la tabla `cuentasd`
---
-ALTER TABLE `cuentasd`
-  ADD PRIMARY KEY (`idCuenta`),
-  ADD KEY `cuentas_ibfk_1` (`idCarreraFC`);
-
---
--- Indices de la tabla `grupos_estudiantilessd`
---
-ALTER TABLE `grupos_estudiantilessd`
-  ADD PRIMARY KEY (`idGrupo`),
-  ADD KEY `grupos_estudiantiles_ibfk_1` (`idAdminFG`);
-
---
--- Indices de la tabla `imagenes_perfiles`
---
-ALTER TABLE `imagenes_perfiles`
-  ADD PRIMARY KEY (`idImagen`),
-  ADD KEY `imagenes_perfiles_ibfk_1` (`idGrupoFIm`);
-
---
--- Indices de la tabla `inscripciones`
---
-ALTER TABLE `inscripciones`
-  ADD PRIMARY KEY (`idInscripcion`),
-  ADD KEY `inscripciones_ibfk_1` (`codigoCuentaFI`),
-  ADD KEY `inscripciones_ibfk_2` (`idGrupoFI`);
-
---
--- Indices de la tabla `likes`
---
-ALTER TABLE `likes`
-  ADD PRIMARY KEY (`idLike`),
-  ADD KEY `likes_ibfk_1` (`codigoCuentaFL`),
-  ADD KEY `likes_ibfk_2` (`idContenidoFL`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
+-- Final view structure for view `administradorgrupo`
 --
 
---
--- AUTO_INCREMENT de la tabla `administradores`
---
-ALTER TABLE `administradores`
-  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+/*!50001 DROP VIEW IF EXISTS `administradorgrupo`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `administradorgrupo` AS select `a`.`nombre1Admin` AS `nombre1Admin`,`a`.`apellido1Admin` AS `apellido1Admin`,`g`.`nombreGrupo` AS `nombreGrupo` from (`administradores` `a` join `grupos_estudiantilessd` `g`) where (`a`.`idAdmin` = `g`.`idGrupo`) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- AUTO_INCREMENT de la tabla `archivos_contenidos`
---
-ALTER TABLE `archivos_contenidos`
-  MODIFY `idArchivoContenido` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `carreras`
---
-ALTER TABLE `carreras`
-  MODIFY `idCarrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT de la tabla `comentarios`
---
-ALTER TABLE `comentarios`
-  MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `contenidos`
---
-ALTER TABLE `contenidos`
-  MODIFY `idContenido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
-
---
--- AUTO_INCREMENT de la tabla `contenidossd`
---
-ALTER TABLE `contenidossd`
-  MODIFY `idContenido` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `cuentas`
---
-ALTER TABLE `cuentas`
-  MODIFY `idCuenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT de la tabla `cuentasd`
---
-ALTER TABLE `cuentasd`
-  MODIFY `idCuenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2175193;
-
---
--- AUTO_INCREMENT de la tabla `grupos_estudiantilessd`
---
-ALTER TABLE `grupos_estudiantilessd`
-  MODIFY `idGrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `imagenes_perfiles`
---
-ALTER TABLE `imagenes_perfiles`
-  MODIFY `idImagen` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `inscripciones`
---
-ALTER TABLE `inscripciones`
-  MODIFY `idInscripcion` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `likes`
---
-ALTER TABLE `likes`
-  MODIFY `idLike` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
+-- Final view structure for view `consultarcuentasgrupos`
 --
 
---
--- Filtros para la tabla `archivos_contenidos`
---
-ALTER TABLE `archivos_contenidos`
-  ADD CONSTRAINT `archivos_contenidos_ibfk_1` FOREIGN KEY (`idContenidoFA`) REFERENCES `contenidossd` (`idContenido`);
+/*!50001 DROP VIEW IF EXISTS `consultarcuentasgrupos`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `consultarcuentasgrupos` AS select `c`.`nombre1Cuenta` AS `nombre1Cuenta`,`c`.`nombre2Cuenta` AS `nombre2Cuenta`,`g`.`nombreGrupo` AS `nombreGrupo` from ((`cuentasd` `c` join `inscripciones` `i`) join `grupos_estudiantilessd` `g`) where ((`c`.`idCuenta` = `i`.`codigoCuentaFI`) and (`i`.`idGrupoFI` = `g`.`idGrupo`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Filtros para la tabla `comentarios`
---
-ALTER TABLE `comentarios`
-  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`codigoCuentaFCom`) REFERENCES `cuentasd` (`idCuenta`),
-  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`idContenidoFCom`) REFERENCES `contenidossd` (`idContenido`);
-
---
--- Filtros para la tabla `contenidossd`
---
-ALTER TABLE `contenidossd`
-  ADD CONSTRAINT `contenidossd_ibfk_1` FOREIGN KEY (`idGrupoFCont`) REFERENCES `grupos_estudiantilessd` (`idGrupo`);
-
---
--- Filtros para la tabla `cuentasd`
---
-ALTER TABLE `cuentasd`
-  ADD CONSTRAINT `cuentasd_ibfk_1` FOREIGN KEY (`idCarreraFC`) REFERENCES `carreras` (`idCarrera`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `grupos_estudiantilessd`
---
-ALTER TABLE `grupos_estudiantilessd`
-  ADD CONSTRAINT `grupos_estudiantilessd_ibfk_1` FOREIGN KEY (`idAdminFG`) REFERENCES `administradores` (`idAdmin`);
-
---
--- Filtros para la tabla `imagenes_perfiles`
---
-ALTER TABLE `imagenes_perfiles`
-  ADD CONSTRAINT `imagenes_perfiles_ibfk_1` FOREIGN KEY (`idGrupoFIm`) REFERENCES `grupos_estudiantilessd` (`idGrupo`);
-
---
--- Filtros para la tabla `inscripciones`
---
-ALTER TABLE `inscripciones`
-  ADD CONSTRAINT `inscripciones_ibfk_1` FOREIGN KEY (`codigoCuentaFI`) REFERENCES `cuentasd` (`idCuenta`),
-  ADD CONSTRAINT `inscripciones_ibfk_2` FOREIGN KEY (`idGrupoFI`) REFERENCES `grupos_estudiantilessd` (`idGrupo`);
-
---
--- Filtros para la tabla `likes`
---
-ALTER TABLE `likes`
-  ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`codigoCuentaFL`) REFERENCES `cuentasd` (`idCuenta`),
-  ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`idContenidoFL`) REFERENCES `contenidossd` (`idContenido`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-06-09 16:14:18
