@@ -35,7 +35,7 @@ if (isset($_POST['user_name']) && isset($_POST['password'])) {
 				$_SESSION['apellido2Admin'] = $row['apellido2Admin'];
 				$_SESSION['correoAdmin'] = $row['correoAdmin'];
             	$_SESSION['idAdmin'] = $row['idAdmin'];
-            	header("Location: grupos.php");
+            	header("Location: lista-estudiante.php");
 		        exit();
             }else{
 				header("Location: index.php?error=User ID ó contraseña inválida.");

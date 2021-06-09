@@ -88,49 +88,31 @@ if (isset($_SESSION['idAdmin']) && isset($_SESSION['user_name'])) {
 
         <!-- Feed Starts -->
         <div class="feed">
-            <div class="feed__inputContainer">
-                <div class="feed__input">
-                    <i class="material-icons"> create </i>
-                    <form action="add_post.php" method="post">
-                        <input name="descripcionC" type="text" required />
-
-                </div>
-                <?php if (isset($_GET['notify'])) { ?>
-                <p class="notify"><?php echo $_GET['notify']; ?></p>
-                <?php } ?>
-                <div class="feed__inputOptions">
-                    <div class="inputOption">
-                        <i style="color: #70b5f9" class="material-icons"> insert_photo </i>
-                        <h4><input name="archivoC" type="file" name="image" id="text-input" required></h4>
-
-                    </div>
-                    <div class="inputOption">
-                        <!--<i style="color: #e7a33e" class="material-icons"> subscriptions </i>
-              <h4>Video</h4>-->
-                    </div>
-                    <!--Publicar-->
-                    <div class="inputOption">
-                        <i style="color: #7fc15e" class="material-icons"> send </i>
-                        <h4><input type="submit" id="text-input" value="Publicar"></h4>
-                    </div>
-                </div>
-                </form>
-            </div>
-
             <!-- Post Starts -->
             <div class="post">                        
 		<table border="1">
+        <?php if (isset($_GET['notify'])) { ?>
+                <p class="notify"><?php echo $_GET['notify']; ?></p>
+                <?php } ?>
                 <tr>
                 <div class="post__header">
-                    <td>idContenido</td>
-                    <td>fechaPublicacionC</td>
-                    <td>descripcionC</td>
-                    <td>archivoC</td>
+                    <td>ID</td>
+                    <td>Nombre 1</td>
+                    <td>Nombre 2</td>
+                    <td>Apellido 1</td>
+                    <td>Apellido 2</td>
+                    <td>Correo</td>
+                    <td>Celular</td>
+                    <td>Usuario</td>
+                    <td>Contraseña</td>
+                    <td>Coordinador?</td>
+                    <td>Carrera</td>
                     <td>Acciones</td>
+
                     <i class="material-icons sidebar__topAvatar"> supervisor_account </i>
                     <div class="post__info">
                         <h2>Hola <?php echo $_SESSION['nombre1Admin']?> <?php echo $_SESSION['apellido1Admin']?>,
-                        aquí están todas las publicaciones realizadas
+                        aquí están la lista de estudiantes
                     </h2>
                     <br>
                     </div>
@@ -145,30 +127,28 @@ if (isset($_SESSION['idAdmin']) && isset($_SESSION['user_name'])) {
                     $conn = mysqli_connect($sname, $unmae, $password, $db_name);
                 
                 
-                $sqlshow ="SELECT * FROM contenidos";
+                $sqlshow ="SELECT * FROM cuentas";
                 $resultshow = mysqli_query($conn,$sqlshow);
                 if(mysqli_num_rows($resultshow)>0){
                     while($row = mysqli_fetch_assoc($resultshow)){
                         ?>
                 <tr>
                 <div class="feed__inputOptions">
-                    <td><?php echo $row['idContenido'];?></td>
-                    <td><?php echo $row['fechaPublicacionC'];?></td>
-                    <td><?php echo $row['descripcionC'];?></td>
-                  
-                    <td><?php echo $row['archivoC'];?>
-                    <div class="inputOption">
-                        <i style="color: gray" class="material-icons"> thumb_up </i>
-                        <h4>Like</h4>
-                        </div>
-                    <div class="inputOption">
-                        <i style="color: gray" class="material-icons"> comment </i>
-                        <h4>Comment</h4>
-                    </td>
+                    <td><?php echo $row['idCuenta'];?></td>
+                    <td><?php echo $row['nombre1Cuenta'];?></td>
+                    <td><?php echo $row['nombre2Cuenta'];?></td>
+                    <td><?php echo $row['apellido1Cuenta'];?></td>
+                    <td><?php echo $row['apellido2Cuenta'];?></td>
+                    <td><?php echo $row['correoInstitucional'];?></td>
+                    <td><?php echo $row['numeroCelular'];?></td>
+                    <td><?php echo $row['usuarioCuenta'];?></td>
+                    <td><?php echo $row['contraseniaCuenta'];?></td>
+                    <td><?php echo $row['esCoordinador'];?></td>
+                    <td><?php echo $row['nombreCarrera'];?></td>    
                     <td>
                         <h4>
-                        <a href="editar_post.php?idContenido=<?php echo $row["idContenido"];?>" class="">Editar</a>
-                        <a href="borrar_post.php?idContenido=<?php echo $row["idContenido"];?>" class="">Borrar</a>
+                        <a href="editar-estudiante.php?idCuenta=<?php echo $row["idCuenta"];?>" class="">Editar</a>
+                        <a href="borrar-estudiante.php?idCuenta=<?php echo $row["idCuenta"];?>" class="">Borrar</a>
                     </td>
                     
                     </div>

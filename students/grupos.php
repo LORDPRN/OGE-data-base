@@ -43,7 +43,7 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
             
             <i class="material-icons headerOption__icon" type=> logout </i>
             
-            <h3><a href="logout.php"><input type="button" value="Cerrar sesión"></a></h3>
+            <h3><a href="logout_student.php"><input type="button" value="Cerrar sesión"></a></h3>
         </div>
         </div>
     </div>
@@ -63,7 +63,7 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
 
             <div class="sidebar__stats">
                 <div class="sidebar__stat">
-                    <p>Privilegios</p>
+                    <p>Coordinador</p>
                     <p style="color:#76DC76">true</p>
                 </div>
 
@@ -74,21 +74,7 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
         <!-- Feed Starts -->
         <div class="feed">
         
-            <div class="feed__inputContainer">
-            
-                            <?php if (isset($_GET['notify'])) { ?>
-                <p class="notify"><?php echo $_GET['notify']; ?></p>
-                <?php } ?>
-          
-                    <!--Publicar-->
-                    <div class="inputOption">
-                        <i style="color: #7fc15e" class="material-icons"> send </i>
-                        <h4><input type="submit" id="text-input" value="Publicar"></h4>
-                    </div>
          
-</div>
-         
-
                 </div>
                 </form>
         </div>
@@ -108,7 +94,7 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
                     <i class="material-icons sidebar__topAvatar"> supervisor_account </i>
                     <div class="post__info">
                         <h2>Hola <?php echo $_SESSION['nombre1Cuenta']?> <?php echo $_SESSION['apellido1Cuenta']?>,
-                        aquí están todos los grupos
+                        aquí están tus grupos
                     </h2>
                     <br>
                     </div>
@@ -123,7 +109,7 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
                     $conn = mysqli_connect($sname, $unmae, $password, $db_name);
                 
                 
-                $sqlshow ="SELECT * FROM grupos_estudiantiles";
+                $sqlshow ="SELECT * FROM grupos_estudiantilessd";
                 $resultshow = mysqli_query($conn,$sqlshow);
                 if(mysqli_num_rows($resultshow)>0){
                     while($row = mysqli_fetch_assoc($resultshow)){
@@ -137,19 +123,10 @@ if (isset($_SESSION['idCuenta']) && isset($_SESSION['usuarioCuenta'])) {
                     <td><?php echo $row['telefonoGrupo'];?></td>
                     <td><?php echo $row['descripcionGrupo'];?></td>
                     <td><?php echo $row['idAdmin'];?></td>
-
-                    <div class="inputOption">
-                        <i style="color: gray" class="material-icons"> thumb_up </i>
-                        <h4>Like</h4>
-                        </div>
-                    <div class="inputOption">
-                        <i style="color: gray" class="material-icons"> comment </i>
-                        <h4>Comment</h4>
-                    </td>
                     <td>
                         <h4>
-                        <a href="editar_post.php?idGrupo=<?php echo $row["idGrupo"];?>" class="">Editar</a>
-                        <a href="borrar_post.php?idGrupo=<?php echo $row["idGrupo"];?>" class="">Borrar</a>
+                        <a href="editar-grupo.php?idGrupo=<?php echo $row["idGrupo"];?>" class="">Editar</a>
+                        <a href="borrar-grupo.php?idGrupo=<?php echo $row["idGrupo"];?>" class="">Borrar</a>
                     </td>
                     
                     </div>
